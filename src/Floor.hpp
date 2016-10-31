@@ -28,9 +28,10 @@ public:
     void build_adjecency_list();
     bool are_adjecent(int room_1_index, int room_2_index);
 
+
     vector<Room*> rooms;
 
-    map<int, RoomEdge> adjecency_list;
+    map<int, vector<RoomEdge>> adjecency_list;
 
     map<RoomType, char> room_type_to_char_map = {
         {RoomType::NORMAL, 'n'},

@@ -41,8 +41,17 @@ void Floor::print_map()
 
 void Floor::build_adjecency_list()
 {
-    for(int index = 0; index < (int)rooms.size(); index++){
-
+    for(int room1 = 0; room1 < (int)rooms.size(); room1++){
+        //for(int room2 = room1 - width; room2 <= room1 + width; room2++){
+        for(int room2 = 0; room2 < (int)rooms.size(); room2++) {
+            if(are_adjecent(room1, room2) && rooms[room1] != nullptr && rooms[room2] != nullptr){
+                RoomEdge roomEdge = {
+                    .room_id = room2,
+                    .connection = Connection::OPEN
+                };
+                adjecency_list[room1].push_back(roomEdge);
+            }
+        }
     }
 }
 

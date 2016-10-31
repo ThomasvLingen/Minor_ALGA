@@ -8,7 +8,6 @@
 
 enum Connection {
     OPEN,
-    CLOSED,
     BROKEN
 };
 
