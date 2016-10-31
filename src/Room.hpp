@@ -6,8 +6,19 @@
 #define SRC_ROOM_HPP
 
 
-class Room {
+enum RoomType {
+    START,
+    END,
+    NORMAL
+};
 
+class Room {
+public:
+    Room(RoomType  room_type, int enemy_level);
+    virtual ~Room();
+
+    RoomType room_type;
+    int enemy_level;
 };
 
 
