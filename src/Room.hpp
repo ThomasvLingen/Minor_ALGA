@@ -19,6 +19,8 @@ public:
 
     RoomType room_type;
     int enemy_level;
+
+    bool is_of_room_type(RoomType type_to_check);
 };
 
 

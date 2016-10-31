@@ -10,3 +10,13 @@ Room::Room(RoomType room_type, int enemy_level)
 {
 
 }
+
+Room::~Room()
+{
+
+}
+
+bool Room::is_of_room_type(RoomType type_to_check)
+{
+    return this->room_type == type_to_check;
+}
