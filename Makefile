@@ -15,7 +15,7 @@ COMPILER_FLAGS = -Wall -Wextra -g -std=c++11 $(INCLUDE_PATHS)
 # Linker flags
 # g = debug symbols
 LIBS_PATH = libs/
-LIBS = -L$(LIBS_PATH) -lfmt
+LIBS = -L$(LIBS_PATH)
 LINKER_FLAGS = -g
 
 # Files to compile
@@ -26,14 +26,8 @@ OBJ_FILES = $(SRC_FILES:.cpp=.o)
 # Path for the resulting file
 BUILD_PATH = build/
 RES_PATH = res/
-PROGRAM_NAME = not_rogue
+PROGRAM_NAME = ALGA_w5_w6
 EXEC = $(BUILD_PATH)$(PROGRAM_NAME)
-
-# fmt
-FMT_PATH = $(LIBS_PATH)fmt/fmt/
-FMT_BUILD_DIR = $(FMT_PATH)build/
-FMT_LIB = libfmt.a
-FMT_TARGET_PATH = $(LIBS_PATH)$(FMT_LIB)
 
 # Compile stuff
 %.o : %.cpp
@@ -50,19 +44,10 @@ $(EXEC) : $(OBJ_FILES)
 	cp -r $(RES_PATH) $(BUILD_PATH)
 	@echo
 
-$(FMT_TARGET_PATH) : $(FMT_PATH)
-	mkdir -p $(FMT_BUILD_DIR)
-	cd $(FMT_BUILD_DIR); cmake ..
-	cd $(FMT_BUILD_DIR); make
-	cp $(FMT_BUILD_DIR)$(FMT_LIB) $(FMT_TARGET_PATH)
-	rm -r $(FMT_BUILD_DIR)
-
 all : $(EXEC)
 
 run : $(EXEC)
 	$(EXEC)
-
-libs : $(FMT_TARGET_PATH)
 
 debug: $(EXEC)
 	gdb $(EXEC)
