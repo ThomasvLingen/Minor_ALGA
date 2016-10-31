@@ -5,8 +5,9 @@
 #include "Room.hpp"
 
 Room::Room(RoomType room_type, int enemy_level)
-: enemy_level(enemy_level)
-, room_type(room_type)
+: room_type(room_type)
+, enemy_level(enemy_level)
+
 {
 
 }
