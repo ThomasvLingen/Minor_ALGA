@@ -1,0 +1,38 @@
+Floor
+    > Rooms
+    Mogelijk een adjecency map
+    > Printen
+    > Generation logic in constructor
+    
+Room
+    > Rooms moeten aan elkaar verbonden zijn
+        Adjecency map
+    > RoomType
+        Niks, Start, End
+    > int enemy_level
+
+Location die onze huidige locatie is, moet aan te passen zijn
+Eigenlijk willen we de algorithmes met een startlocatie kunnen runnen, wat dus onze huidige locatie moet zijn
+
+========
+
+Connection
+    > open
+    > closed
+    > broken
+
+RoomEdge
+    > int room_id
+    > Connection connection
+
+Floor
+    > Adjecency list (map<Room, RoomEdge>)
+    > Rooms (vector<Room>)
+    > Print function
+    > Generation logic
+
+Room
+    > RoomType
+    > int enemy_level
+
+
