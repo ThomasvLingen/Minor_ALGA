@@ -17,6 +17,11 @@ using std::cout;
 using std::endl;
 using std::map;
 
+struct Coord {
+    size_t x;
+    size_t y;
+};
+
 class Floor {
 public:
     Floor(int width, int height);
@@ -27,7 +32,9 @@ public:
     void print_map();
     void build_adjecency_list();
     bool are_adjecent(int room_1_index, int room_2_index);
-
+    size_t get_room_index(Coord coord);
+    vector<size_t> get_adjecent_room_indexes(size_t current_room_index);
+    void set_end_room();
 
     vector<Room*> rooms;
 

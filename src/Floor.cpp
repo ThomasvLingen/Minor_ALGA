@@ -3,6 +3,8 @@
 //
 
 #include "Floor.hpp"
+#include <random>
+#include <time.h>
 
 
 Floor::Floor(int width, int height)
@@ -11,10 +13,19 @@ Floor::Floor(int width, int height)
 {
     this->rooms.resize((size_t)(width * height)); //all nullptrs now
     rooms[0] = new Room(RoomType::START, 0);
-    for(int index = 1; index < (width * height - 1); index++){
+    for(int index = 1; index < (width * height); index++){
         rooms[index] = new Room(RoomType::NORMAL, 0);
     }
-    rooms[height*width - 1] = new Room(RoomType::END, 0);
+    set_end_room();
+}
+
+void Floor::set_end_room()
+{
+    srand(time(0));
+
+    int index = rand() % (width * height);
+    std::cout << "index: " << index << endl;
+    rooms[index]->room_type = RoomType::END;
 }
 
 Floor::~Floor()
@@ -67,4 +78,18 @@ bool Floor::are_adjecent(int room_1_index, int room_2_index)
         return true;
     }
     return false;
+}
+
+size_t Floor::get_room_index(Coord coord)
+{
+    return (coord.y * this->width) + coord.x;
+}
+
+vector<size_t> Floor::get_adjecent_room_indexes(size_t current_room_index)
+{
+    vector<size_t> indexes;
+    for(auto edgy : this->adjecency_list[current_room_index]){
+        indexes.push_back((size_t)edgy.room_id);
+    }
+    return indexes;
 }
