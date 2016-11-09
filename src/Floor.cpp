@@ -24,7 +24,6 @@ void Floor::set_end_room()
     srand(time(0));
 
     int index = rand() % (width * height);
-    std::cout << "index: " << index << endl;
     rooms[index]->room_type = RoomType::END;
 }
 
